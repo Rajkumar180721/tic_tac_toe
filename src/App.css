@@ -1,38 +1,135 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300&display=swap');
+
+#app {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color:  #c8beac;
+  --height: calc(100vh - 2%);
+  overflow: hidden;
+}
+
+#header {
+  position: absolute;
+  height: 40px;
+  width: 100%;
   text-align: center;
+  color: #9293a0;
+  padding-top: 1.5%;
+  padding-bottom: .5%;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 3px 10px rgb(97, 97, 97);
+  z-index: 3;
+  user-select: none;
+  animation: smoothen-header .3s;
+
+  transition: opacity .3s;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@keyframes smoothen-header {
+  from {
+    margin-top: -100px;
+  }
+  to {
+    margin-top: 0px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#header > span {
+  font-family: 'Jura', sans-serif;
+  font-size: 2.4em;
+  font-weight: bold;
 }
 
-.App-link {
-  color: #61dafb;
+#dark-mode {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  left: auto;
+  right: 2%;
+  top: 0px;
+  margin-top: 1.5%;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
+#dark-mode:hover {
+  filter: drop-shadow(0px 25px 15px rgba( 0, 0, 0, .1)) ;
+}
+
+#dark-mode > #light-mode-svg {
+  cursor: pointer;
+}
+
+#dark-mode:hover > #light-mode-svg {
+  animation: sun-spin;
+  animation-duration: 1s;
+}
+
+#dark-mode:hover > #light-mode-svg > line {
+  animation: sun-leaf;
+  animation-delay: .3s;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+@keyframes sun-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes sun-leaf {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: .2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#fill-space {
+  height: 40px;
+  width: 100%;
+  padding-top: 2%;
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  #menu {
+    width: 100%;
+  }
+}
+
+#test {
+  stroke-dasharray: 18.088102340698242;
+  stroke-dashoffset: 18.088102340698242;
+  animation: Test 5s linear reverse infinite;
+}
+
+@keyframes Test {
+  from {
+    stroke-dashoffset: 18.1;
+  }
+  to {
+    stroke-dasharray: 0;
+    stroke-dashoffset:  0;
   }
 }
